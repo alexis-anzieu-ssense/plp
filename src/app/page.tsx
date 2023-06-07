@@ -2,6 +2,7 @@
 
 import Products from "./products";
 import useSWR from "swr";
+import { useSearchParams } from "next/navigation";
 
 const fetcher = (args: any) => fetch(args).then((res) => res.json());
 
@@ -18,17 +19,18 @@ function useProducts() {
     };
 }
 
-export default function Home(req: any) {
-    console.log(req);
+export default function Home() {
     const { products, isLoading } = useProducts();
+    const params = useSearchParams();
+
     if (isLoading) return <div>loading...</div>;
 
     return (
         <main>
             <Products
                 products={products.products}
-                lazy={req.searchParams.lazy}
-                priority={req.searchParams.priority}
+                lazy={params.get("lazy")}
+                priority={params.get("priority")}
             />
         </main>
     );
