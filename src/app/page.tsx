@@ -19,6 +19,7 @@ function useProducts() {
 }
 
 export default function Home(req: any) {
+    console.log(req);
     const { products, isLoading } = useProducts();
     if (isLoading) return <div>loading...</div>;
 
