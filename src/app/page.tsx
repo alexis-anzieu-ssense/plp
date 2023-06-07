@@ -27,6 +27,15 @@ export default function Home() {
 
     return (
         <main>
+            <a href="https://plp-amber.vercel.app">default</a> <br />
+            <a href="https://plp-amber.vercel.app/?lazy=true">
+                lazy loading
+            </a>{" "}
+            <br />
+            <a href="https://plp-amber.vercel.app/?lazy=true&priority=high">
+                lazy loading + high priority
+            </a>
+            <br />
             <Products
                 products={products.products}
                 lazy={params.get("lazy")}
