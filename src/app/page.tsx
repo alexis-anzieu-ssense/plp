@@ -3,8 +3,10 @@
 import Products from "./products";
 import useSWR from "swr";
 
-// tslint:disable-next-line
-const fetcher = (...args: any[]) => fetch(...args).then((res) => res.json());
+const fetcher = () =>
+    fetch(
+        "http://internal-edge-qa.ssense.com/products/products?language=fr&country=fr"
+    ).then((res) => res.json());
 
 function useProducts() {
     const { data, error, isLoading } = useSWR(
