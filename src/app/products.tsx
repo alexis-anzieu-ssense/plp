@@ -1,7 +1,6 @@
 "use client";
 
 export default function Products({ products, lazy, priority }: any) {
-    console.log(lazy);
     return (
         <main>
             <h1>Products</h1>
