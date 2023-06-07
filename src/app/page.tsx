@@ -1,19 +1,35 @@
-import Products from "./products";
+"use client";
 
-async function getData() {
-    const res = await fetch(
+import Products from "./products";
+import useSWR from "swr";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
+function useProducts() {
+    const { data, error, isLoading } = useSWR(
         "http://internal-edge-qa.ssense.com/products/products?language=fr&country=fr",
-        { cache: "no-store" }
+        fetcher
     );
-    return res.json();
+
+    console.log(data);
+
+    return {
+        products: data,
+        isLoading,
+        isError: error,
+    };
 }
 
 export default async function Home(req: any) {
-    const data = await getData();
+    const { products, isLoading } = useProducts();
+    if (isLoading) return <div>loading...</div>;
+
+    console.log(products);
+
     return (
         <main>
             <Products
-                products={data.products}
+                products={products}
                 lazy={req.searchParams.lazy}
                 priority={req.searchParams.priority}
             />
