@@ -4,7 +4,7 @@ import Products from "./products";
 import useSWR from "swr";
 
 // tslint:disable-next-line
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const fetcher = (...args: any[]) => fetch(...args).then((res) => res.json());
 
 function useProducts() {
     const { data, error, isLoading } = useSWR(
