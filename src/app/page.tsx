@@ -2,7 +2,8 @@ import Products from "./products";
 
 async function getData() {
     const res = await fetch(
-        "http://internal-edge-qa.ssense.com/products/products?language=fr&country=fr"
+        "http://internal-edge-qa.ssense.com/products/products?language=fr&country=fr",
+        { cache: "no-store" }
     );
     return res.json();
 }
