@@ -4,6 +4,8 @@ export default function Products({ products, lazy, priority }: any) {
     return (
         <main>
             <h1>Products</h1>
+            <p>Lazy loading {lazy ? "enabled" : "disabled"}.</p>
+            <p>Priority: {priority ?? "auto"}</p>
             <div
                 style={{
                     display: "flex",
