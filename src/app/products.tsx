@@ -4,7 +4,7 @@ export default function Products({ products, lazy, priority }: any) {
     return (
         <main>
             <h1>Products</h1>
-            <p>Lazy loading {lazy ? "enabled" : "disabled"}.</p>
+            <p>Lazy loading: {lazy === true ? "enabled" : "disabled"}.</p>
             <p>Priority: {priority ?? "auto"}</p>
             <div
                 style={{
@@ -16,7 +16,7 @@ export default function Products({ products, lazy, priority }: any) {
                 {products.map((product: any) => (
                     <div key={product.id}>
                         <img
-                            loading={lazy ? "lazy" : "eager"}
+                            loading={lazy === "true" ? "lazy" : "eager"}
                             fetchPriority={priority ?? "auto"}
                             alt={product.name}
                             width={300}
